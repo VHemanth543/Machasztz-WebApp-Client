@@ -1,0 +1,72 @@
+<div class="boady-style">
+    <mat-tab-group (selectedTabChange)="changed()">
+
+        <!-- DISPLAY ALL USERS TAB-->
+        <mat-tab label="All Users">
+            <div class="row" >
+                    <mat-card class="col-3" *ngFor="let item of data"> 
+                         {{item.userName}} 
+
+                        <button style="position : absolute; right: 5px; top: 10px; width: 30px;" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon">
+                            <mat-icon matSuffix>mode_edit</mat-icon>
+                        </button>
+                        <button style="position : absolute; right: 40px; top: 10px; width: 30px;" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon"
+                            (click)="delete(item)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        
+                    </mat-card>
+                    
+                
+              </div>
+        </mat-tab>
+
+        <!-- ADD USERS TAB-->
+        <mat-tab label="ADD USERS"> 
+            
+            <div class="container-xl" style="padding-bottom: 20px; ">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>First Name :</mat-label>
+                    <input matInput  placeholder="First Name" [(ngModel)]="first_name" required>
+                    
+                </mat-form-field><br><br>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Last Name :</mat-label>
+                    <input matInput  placeholder="Last Name" [(ngModel)]="last_name" required>
+                    
+                </mat-form-field><br><br>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>User Name :</mat-label>
+                    <input matInput  placeholder="User Name" [(ngModel)]="user_name" required>
+                    
+                </mat-form-field><br><br>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email :</mat-label>
+                    <input matInput  placeholder="Email" [(ngModel)]="email" required>
+                    
+                </mat-form-field><br><br>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Password :</mat-label>
+                    <input matInput  placeholder="Password" type="password" [(ngModel)]="password" required>
+                    
+                </mat-form-field><br><br>
+
+                <div class="alert alert-danger" role="alert" *ngIf="message">
+                   <strong> {{message}} </strong> 
+                </div>
+                
+
+            </div>
+
+            <div class="container-xl" style="padding-bottom: 20px;">
+                <button mat-raised-button color="warn" (click)="clear()">Clear</button>
+                <button mat-raised-button color="primary" style="margin-left: 50px;" (click)="submit()">submit</button>
+            </div>
+        </mat-tab>
+        
+    </mat-tab-group>
+</div>
